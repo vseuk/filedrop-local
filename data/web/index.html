@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>FileDrop</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="lock" class="lock hidden">
+        <div class="lock-card">
+            <p class="eyebrow">FileDrop</p>
+            <h2>Введите PIN-код</h2>
+            <p>Код показан в окне FileDrop на компьютере.</p>
+            <input id="pinInput" type="tel" inputmode="numeric" maxlength="8" autocomplete="one-time-code" placeholder="••••">
+            <button id="pinBtn" class="btn">Продолжить</button>
+            <p id="pinError" class="pin-error" aria-live="polite"></p>
+        </div>
+    </div>
+    <main class="app-shell">
+        <header class="app-header">
+            <div class="brand"><div class="brand-mark" aria-hidden="true">FD</div><div><h1>FileDrop</h1><p>Обмен файлами в локальной сети</p></div></div>
+            <span class="network-state"><i></i> В этой сети</span>
+        </header>
+        <nav class="tabs" aria-label="Разделы FileDrop">
+            <button class="tab active" data-tab="send">Отправить</button>
+            <button class="tab" data-tab="receive">Файлы</button>
+            <button class="tab" data-tab="notes">Заметка</button>
+        </nav>
+        <section id="tab-send" class="panel">
+            <div class="panel-heading"><h2>Отправить на компьютер</h2><p>Файлы сразу появятся в окне FileDrop.</p></div>
+            <div class="drop" id="dropZone" role="button" tabindex="0" aria-label="Выбрать файлы"><div class="drop-icon" aria-hidden="true">↑</div><p class="drop-title">Выберите файлы</p><p class="drop-hint">Нажмите здесь или перетащите файлы</p></div>
+            <input type="file" id="fileInput" multiple hidden>
+            <div id="queueMeta" class="queue-meta hidden"></div>
+            <ul id="queue" class="queue" aria-live="polite"></ul>
+            <button class="btn" id="sendBtn" disabled>Отправить</button>
+            <div id="msg" class="msg" aria-live="polite"></div>
+        </section>
+        <section id="tab-receive" class="panel hidden">
+            <div class="panel-heading row-heading"><div><h2>Файлы на компьютере</h2><p>Выберите один или несколько файлов для скачивания.</p></div><button id="refreshBtn" class="text-btn">Обновить</button></div>
+            <div class="list-head"><label class="sel-all"><input type="checkbox" id="selAll"> Выбрать все</label></div>
+            <ul id="fileList" class="filelist"><li class="empty">Загружаем список файлов…</li></ul>
+            <div class="bulk hidden" id="bulkBar"><button class="btn secondary" id="zipBtn">Скачать выбранные</button><button class="btn danger" id="delBtn">Удалить</button></div>
+        </section>
+        <section id="tab-notes" class="panel hidden"><div class="panel-heading"><h2>Общая заметка</h2><p>Удобно для ссылки, короткого текста или кода.</p></div><textarea id="notesArea" class="notes" placeholder="Введите текст…"></textarea><button class="btn" id="notesSave">Сохранить заметку</button><div id="notesMsg" class="msg" aria-live="polite"></div></section>
+    </main>
+    <div id="viewer" class="viewer hidden"><button id="viewerClose" class="viewer-close" aria-label="Закрыть просмотр">×</button><div id="viewerBody" class="viewer-body"></div></div>
+    <script src="/app.js"></script>
+</body>
+</html>

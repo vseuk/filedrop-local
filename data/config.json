@@ -1,0 +1,8 @@
+{
+  "port": 8080,
+  "folder": "",
+  "temporary_folder": true,
+  "pin_on_start": false,
+  "theme": "light",
+  "auto_start": false
+}

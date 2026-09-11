@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+.filedrop-build-venv/
+
+# PyInstaller
+build/
+dist/
+*.spec.bak
+
+# Local application data
+data/config.local.json
+data/downloads/*
+!data/downloads/.gitkeep
+
+# Editors and OS files
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
